@@ -1,0 +1,56 @@
+
+
+  <h2 id="tableLabel">Employees</h2>
+
+  <div *ngIf="permissions">
+    <p *ngFor="let permission of permissions">
+      <span *ngIf="permission.status=== true && permission.view=== 'Add'">
+        <a class="nav-link" [routerLink]="['/add-employee']">Add Employee</a>
+      </span>
+
+    </p>
+  </div>
+
+  <p *ngIf="!employees"><em>Loading...</em></p>
+
+  <p></p>
+
+
+
+
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="employees">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Designation</th>
+        <th>Contact No</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.designation }}</td>
+        <td>{{ employee.contactNo }}</td>
+        <td>{{ employee.address }}</td>
+        <td>
+          <div *ngIf="permissions">
+            <p *ngFor="let permission of permissions">
+              <span *ngIf="permission.status=== true && permission.view=== 'Edit'">
+                <a routerLink="/add-employee/{{employee.id}}">Edit</a>
+              </span>
+              <span *ngIf="permission.status=== true && permission.view=== 'Delete'">
+                <a href="javascript:void(0)" (click)="deleteEmployee(employee)">Delete</a>
+              </span>
+
+            </p>
+          </div>
+
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+

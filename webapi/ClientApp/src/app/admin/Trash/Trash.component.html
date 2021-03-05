@@ -1,0 +1,27 @@
+<h2 id="tableLabel">Trash</h2>
+
+<p *ngIf="!employees"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="employees">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Contact No</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.designation }}</td>
+      <td>{{ employee.contactNo }}</td>
+      <td>{{ employee.address }}</td>
+      <td>
+        <a role="button" href="javascript:void(0)" (click)="recoverEmployee(employee.id)">Recover</a>
+
+      </td>
+    </tr>
+  </tbody>
+</table>

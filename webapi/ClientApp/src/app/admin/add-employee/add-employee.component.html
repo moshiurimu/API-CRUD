@@ -1,0 +1,30 @@
+<div>
+  <form name="form" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="name" id="name" [(ngModel)]="employee.name"
+             placeholder="Enter Name" #Name="ngModel" required
+             [class.border-danger]="Name.invalid && (Name.dirty || Name.touched)">
+    </div>
+    <div class="form-group">
+      <label for="designation">Designation</label>
+      <input type="text" class="form-control" name="c" [(ngModel)]="employee.designation" id="designation" placeholder="Enter Designation"
+             #Designation="ngModel" required />
+    </div>
+
+    <div class="form-group">
+      <label for="contactNo">ContactNo</label>
+      <input type="text" class="form-control" name="contactNo" [(ngModel)]="employee.contactNo" id="ContactNo" placeholder="Enter Contact no"
+             #ContactNo="ngModel" required [class.border-danger]="ContactNo.invalid && (ContactNo.dirty || ContactNo.touched)" />
+    </div>
+
+    <div class="form-group">
+      <label for="address">address</label>
+      <input type="text" class="form-control" name="address" [(ngModel)]="employee.address" id="Address" placeholder="Enter Address no"
+             #Address="ngModel" required [class.border-danger]="Address.invalid && (Address.dirty || Address.touched)" />
+    </div>
+    <button type="button" [disabled]="f.form.invalid" (click)="saveEmployee()" class="btn btn-success mr-2">
+      Save Changes
+    </button>
+  </form>
+</div>
